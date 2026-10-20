@@ -1,6 +1,7 @@
 package com.example.cyklaktywnosciaplikacji2;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -44,9 +45,46 @@ buttonMinus.setOnClickListener(
                         punkty++;
                         textView.setText(punkty+"");
                     }
-
                 }
-
         );
+        Log.i("CZAS","wywolana metoda onCreate");
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("CZAS","wywolana metoda onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("CZAS","wywolana metoda onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("CZAS","wywolana metoda onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("CZAS","wywolana metoda onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("CZAS","wywolana metoda onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("CZAS","wywolana metoda onDestroy");
+    }
+    //nie wolno wywolywac metod cyklu zycia aktywnosci
+    //https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pl
 }
