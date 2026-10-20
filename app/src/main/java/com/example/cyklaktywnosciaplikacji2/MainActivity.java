@@ -1,12 +1,14 @@
 package com.example.cyklaktywnosciaplikacji2;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -26,9 +28,14 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        if(savedInstanceState !=null) {
+            punkty = savedInstanceState.getInt("PUNKTY",0);
+        }
         buttonPlus =findViewById(R.id.button);
         buttonMinus =findViewById(R.id.button2);
         textView = findViewById(R.id.textviewPunkty);
+        textView.setText(punkty+"");
+
 buttonMinus.setOnClickListener(
         new View.OnClickListener() {
             @Override
@@ -87,4 +94,12 @@ buttonMinus.setOnClickListener(
     }
     //nie wolno wywolywac metod cyklu zycia aktywnosci
     //https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pl
+
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("CZAS","wywolana metoda onSaveInstanceState");
+        outState.putInt("PUNKTY",punkty);
+    }
 }
